@@ -16,7 +16,7 @@ export default function Component({ service }) {
   }
 
   if (!widget.fields) {
-    widget.fields = ["queries", "blocked", "blocking"];
+    widget.fields = ["queries", "blocked", "gravity"];
   }
 
   if (!piholeData) {
@@ -25,7 +25,7 @@ export default function Component({ service }) {
         <Block label="pihole.queries" />
         <Block label="pihole.blocked" />
         <Block label="pihole.blocked_percent" />
-        <Block label="pihole.blocking" />
+        <Block label="pihole.gravity" />
       </Container>
     );
   }
@@ -44,8 +44,8 @@ export default function Component({ service }) {
         value={t("common.percent", { value: parseFloat(piholeData.ads_percentage_today).toPrecision(3) })}
       />
       <Block
-        label="pihole.blocking"
-        value={t("common.number", { value: parseInt(piholeData.blocking, 10) })}
+        label="pihole.gravity"
+        value={t("common.number", { value: parseInt(piholeData.domains_being_blocked, 10) })}
       />
     </Container>
   );
